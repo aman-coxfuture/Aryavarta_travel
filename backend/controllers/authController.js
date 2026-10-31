@@ -55,4 +55,45 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, registerUser };
+// @desc    Update user profile (Name & Email)
+// @route   PUT /api/auth/profile
+const updateUserProfile = async (req, res) => {
+  try {
+    const { name, email } = req.body;
+
+    if (email) {
+      const emailExists = await User.findOne({
+        email: email.toLowerCase(),
+        _id: { $ne: req.user._id }
+      });
+      if (emailExists) {
+        return res.status(400).json({ message: "Email is already in use by another account" });
+      }
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        ...(name && { name: name.trim() }),
+        ...(email && { email: email.trim().toLowerCase() })
+      },
+      { new: true, runValidators: true }
+    ).select("-password");
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      role: updatedUser.role,
+      token: generateToken(updatedUser._id),
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message || "Failed to update profile" });
+  }
+};
+
+module.exports = { loginUser, registerUser, updateUserProfile };

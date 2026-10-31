@@ -76,4 +76,20 @@ const updatePayment = async (req, res) => {
   }
 };
 
-module.exports = { createBooking, getAllBookings, updateBookingStatus, updatePayment };
+// @desc    Delete a booking (Admin)
+// @route   DELETE /api/admin/bookings/:id
+const deleteBooking = async (req, res) => {
+  try {
+    const booking = await Booking.findByIdAndDelete(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    res.status(200).json({ message: "Booking deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { createBooking, getAllBookings, updateBookingStatus, updatePayment, deleteBooking };

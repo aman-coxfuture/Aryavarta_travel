@@ -8,7 +8,7 @@ const { getSettings, updateSettings } = require("../controllers/settingsControll
 // Controllers Import
 const { createPackage, getAllAdminPackages, updatePackage, deletePackage } = require("../controllers/packageController");
 const { uploadImage } = require("../controllers/uploadController");
-const { getAllBookings, updateBookingStatus, updatePayment } = require("../controllers/bookingController");
+const { getAllBookings, updateBookingStatus, updatePayment, deleteBooking } = require("../controllers/bookingController");
 
 // Sabhi admin routes protected hain (Bina token ke koi access nahi kar sakta)
 router.use(protect); 
@@ -35,6 +35,9 @@ router.put("/bookings/:id/status", updateBookingStatus);
 
 // Payment update karne ke liye (Mark as Paid)
 router.put("/bookings/:id/payment", updatePayment);
+
+// Booking delete karne ke liye
+router.delete("/bookings/:id", deleteBooking);
 router.get("/enquiries", getAllEnquiries);
 router.put("/enquiries/:id", updateEnquiryStatus);
 router.get("/settings", getSettings);   // Admin fetch kar sake

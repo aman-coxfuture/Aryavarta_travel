@@ -31,7 +31,7 @@ const updateEnquiryStatus = async (req, res) => {
     const enquiry = await Enquiry.findByIdAndUpdate(
       req.params.id,
       { status },
-      { new: true }
+      { returnDocument: 'after' }
     );
     res.json(enquiry);
   } catch (error) {

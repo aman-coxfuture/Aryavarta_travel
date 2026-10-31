@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Settings as SettingsIcon, Save, MessageCircle, Mail, Phone, 
-  MapPin, ShieldCheck, Check, Globe, Loader2
+  MapPin, ShieldCheck, Check, Globe, Loader2, User
 } from 'lucide-react';
 import api from '../api/axios'; // Backend API connect
 
@@ -17,10 +17,27 @@ export default function Settings() {
     permitFeePerPerson: 0,
     environmentalTaxPerPerson: 0
   });
+
+  const [adminName, setAdminName] = useState('');
+  const [adminEmail, setAdminEmail] = useState('');
   
   const [savedToast, setSavedToast] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+
+  // Initialize admin profile from localStorage
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('adminUser');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.name) setAdminName(parsed.name);
+        if (parsed.email) setAdminEmail(parsed.email);
+      }
+    } catch (err) {
+      console.error("Failed to parse adminUser from localStorage", err);
+    }
+  }, []);
 
   // 1. Fetch Settings from Backend
   useEffect(() => {
@@ -64,7 +81,35 @@ export default function Settings() {
     setSaving(true);
 
     try {
-      // UI data ko wapas backend format me map karo
+      // 1. Update Admin Profile API Call
+      const profileRes = await api.put('/auth/profile', {
+        name: adminName,
+        email: adminEmail,
+      });
+
+      // Update localStorage with updated admin credentials
+      let existingUser = {};
+      try {
+        const stored = localStorage.getItem('adminUser');
+        if (stored) existingUser = JSON.parse(stored);
+      } catch (err) {
+        console.error(err);
+      }
+
+      const updatedUserData = {
+        ...existingUser,
+        name: adminName,
+        email: adminEmail,
+        ...(profileRes.data?.role && { role: profileRes.data.role }),
+      };
+
+      localStorage.setItem('adminUser', JSON.stringify(updatedUserData));
+
+      if (profileRes.data?.token) {
+        localStorage.setItem('adminToken', profileRes.data.token);
+      }
+
+      // 2. UI data ko wapas backend format me map karo
       const payload = {
         whatsappNumber: settings.whatsappNumber,
         businessEmail: settings.businessEmail,
@@ -79,10 +124,13 @@ export default function Settings() {
       await api.put('/admin/settings', payload);
       
       setSavedToast(true);
-      setTimeout(() => setSavedToast(false), 3000);
+      setTimeout(() => {
+        setSavedToast(false);
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       console.error(error);
-      alert("Failed to save settings. Please try again.");
+      alert(error.response?.data?.message || "Failed to save settings. Please try again.");
     } finally {
       setSaving(false);
     }
@@ -97,7 +145,7 @@ export default function Settings() {
       {savedToast && (
         <div className="fixed top-5 right-5 z-50 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl border border-emerald-500/50 flex items-center space-x-2 animate-bounce">
           <Check className="w-4 h-4 text-emerald-400" />
-          <span className="font-semibold">Business settings successfully updated!</span>
+          <span className="font-semibold">Profile and business settings successfully updated!</span>
         </div>
       )}
 
@@ -110,12 +158,66 @@ export default function Settings() {
           Business Settings
         </h1>
         <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
-          Update the global WhatsApp contact, official emails, and basecamp addresses displayed across the client website.
+          Update your admin profile credentials, official WhatsApp contact, emails, and basecamp addresses.
         </p>
       </div>
 
       <form onSubmit={handleSave} className="space-y-6">
         
+        {/* Admin Profile Settings */}
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center">
+            <User className="w-4 h-4 text-amber-600 mr-2" />
+            Admin Profile Settings
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {/* Admin Name */}
+            <div>
+              <label className="text-xs font-bold text-slate-700 uppercase tracking-wide block mb-1.5">
+                Admin Name *
+              </label>
+              <div className="relative">
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  name="adminName"
+                  required
+                  value={adminName}
+                  onChange={(e) => setAdminName(e.target.value)}
+                  placeholder="e.g. Stanzin Norbu"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                />
+              </div>
+              <span className="text-[11px] text-slate-400 mt-1 block">
+                Displayed in the top-right profile header and activity logs.
+              </span>
+            </div>
+
+            {/* Admin Email */}
+            <div>
+              <label className="text-xs font-bold text-slate-700 uppercase tracking-wide block mb-1.5">
+                Admin Email *
+              </label>
+              <div className="relative">
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="email"
+                  name="adminEmail"
+                  required
+                  value={adminEmail}
+                  onChange={(e) => setAdminEmail(e.target.value)}
+                  placeholder="admin@aryavartatravel.com"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                />
+              </div>
+              <span className="text-[11px] text-slate-400 mt-1 block">
+                Used for admin authentication and credential management.
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Contact Information */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center">

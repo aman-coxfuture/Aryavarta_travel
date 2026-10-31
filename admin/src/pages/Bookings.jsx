@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Search, Filter, Eye, Check, DollarSign, RotateCcw,
-  Calendar, Download, Users, CreditCard, Phone
+  Calendar, Download, Users, CreditCard, Phone, Trash2
 } from 'lucide-react';
 import api from '../api/axios'; // Backend connect karne ke liye
 import BookingDetailsModal from '../components/BookingDetailsModal';
@@ -95,6 +95,20 @@ export default function Bookings() {
     } catch (error) {
       console.error("Failed to update payment:", error);
       alert("Failed to update payment. Please try again.");
+    }
+  };
+
+  // 4. Delete Booking API Call
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this booking? This action cannot be undone.");
+    if (!confirmed) return;
+
+    try {
+      await api.delete('/admin/bookings/' + id);
+      setBookings((prev) => prev.filter((b) => b._id !== id));
+    } catch (error) {
+      console.error("Failed to delete booking:", error);
+      alert("Failed to delete booking. Please try again.");
     }
   };
 
@@ -352,6 +366,18 @@ export default function Bookings() {
                           >
                             <Eye className="w-4 h-4" />
                           </button>
+
+                          {/* Delete Booking Button (Only for completed or cancelled) */}
+                          {(b.status === 'completed' || b.status === 'cancelled') && (
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(b._id)}
+                              className="p-1.5 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-600 transition-colors"
+                              title="Delete Booking"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          )}
 
                         </div>
                       </td>

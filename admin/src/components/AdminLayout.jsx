@@ -22,8 +22,25 @@ export default function AdminLayout({ children }) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [adminUser, setAdminUser] = useState(() => {
+    try {
+      const stored = localStorage.getItem('adminUser');
+      return stored ? JSON.parse(stored) : null;
+    } catch (e) {
+      return null;
+    }
+  });
   const location = useLocation();
   const navigate = useNavigate();
+
+  const getInitials = (name) => {
+    if (!name) return 'AD';
+    const parts = name.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return name.slice(0, 2).toUpperCase();
+  };
 
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -34,6 +51,8 @@ export default function AdminLayout({ children }) {
   ];
 
   const handleLogout = () => {
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('adminUser');
     localStorage.removeItem('aryavarta_admin_auth');
     navigate('/login');
   };
@@ -222,11 +241,11 @@ export default function AdminLayout({ children }) {
                 className="flex items-center space-x-3 p-1.5 rounded-xl hover:bg-slate-100 transition-colors"
               >
                 <div className="w-8 h-8 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-xs">
-                  SN
+                  {getInitials(adminUser?.name)}
                 </div>
                 <div className="hidden md:block text-left">
-                  <div className="text-xs font-bold text-slate-900">Stanzin Norbu</div>
-                  <div className="text-[10px] text-slate-500">Expedition Ops Lead</div>
+                  <div className="text-xs font-bold text-slate-900">{adminUser?.name || 'Administrator'}</div>
+                  <div className="text-[10px] text-slate-500 capitalize">{adminUser?.role === 'superAdmin' ? 'Super Admin' : (adminUser?.role || 'Admin')}</div>
                 </div>
                 <ChevronDown className="w-4 h-4 text-slate-400 hidden md:block" />
               </button>
@@ -234,8 +253,8 @@ export default function AdminLayout({ children }) {
               {profileDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-slate-200 py-2 z-50 text-xs text-slate-700 animate-fadeIn">
                   <div className="px-4 py-2 border-b border-slate-100">
-                    <div className="font-bold text-slate-900">Stanzin Norbu</div>
-                    <div className="text-[11px] text-slate-500">operations@aryavartatravel.com</div>
+                    <div className="font-bold text-slate-900">{adminUser?.name || 'Administrator'}</div>
+                    <div className="text-[11px] text-slate-500 truncate">{adminUser?.email || 'admin@aryavarta.com'}</div>
                   </div>
                   <Link
                     to="/settings"

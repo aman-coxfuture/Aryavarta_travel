@@ -400,6 +400,7 @@ export default function Booking() {
                           <option value="Mahindra Scorpio 4x4">Mahindra Scorpio 4x4</option>
                           <option value="Force Tempo Traveller">Force Tempo Traveller (Large Groups)</option>
                           <option value="Royal Enfield Himalayan">Royal Enfield Himalayan Bikes</option>
+                          <option value="Royal Enfield Himalayan">BMW Bikes</option>
                         </select>
                       </div>
                     </div>

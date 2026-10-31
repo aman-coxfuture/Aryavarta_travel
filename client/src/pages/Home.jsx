@@ -55,11 +55,11 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 font-serif">
-            Discover The Untamed Magic Of <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">Ladakh</span>
+           Where The Mountains Touch <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">The Sky</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto font-light leading-relaxed mb-10 drop-shadow-md">
-            Journey beyond the ordinary. Experience Pangong’s sapphire waters, traverse ancient silk route valleys, and touch the sky on world-record mountain passes with authentic Ladakhi hosts.
+            Discover the magic of Ladakh with unforgettable journeys through breathtaking Himalayan landscapes, turquoise alpine lakes, ancient monasteries, and hidden mountain valleys. Experience authentic local culture, thrilling adventures, and moments that stay with you forever.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">

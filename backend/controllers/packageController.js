@@ -71,7 +71,7 @@ const updatePackage = async (req, res) => {
     const updatedPackage = await Package.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
-      { new: true }
+      { returnDocument: 'after'}
     );
     res.json(updatedPackage);
   } catch (error) {

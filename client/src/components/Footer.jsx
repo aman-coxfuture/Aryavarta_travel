@@ -156,12 +156,30 @@ UT Ladakh !</span>
         </div>
 
         {/* Bottom line */}
-        <div className="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Aryavarta Travel Pvt. Ltd. All rights reserved.</p>
-          <p className="mt-2 sm:mt-0 flex items-center">
-            Handcrafted with <Heart className="w-3.5 h-3.5 text-red-500 mx-1 fill-red-500" /> in Ladakh, Himalayas
-          </p>
-        </div>
+        
+<div className="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+
+  <div className="text-center sm:text-left">
+    <p>
+      © {new Date().getFullYear()} Aryavarta Travel Pvt. Ltd. All rights reserved.
+    </p>
+
+    <p className="mt-2">
+      Designed & Developed by{" "}
+      <span className="font-semibold text-slate-300">
+        CoxFuture Technology
+      </span>
+    </p>
+  </div>
+
+  <p className="mt-3 sm:mt-0 flex items-center">
+    Handcrafted with
+    <Heart className="w-3.5 h-3.5 text-red-500 mx-1 fill-red-500" />
+    in Ladakh, Himalayas
+  </p>
+
+</div>
+
       </div>
     </footer>
   );
