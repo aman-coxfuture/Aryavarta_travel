@@ -1,4 +1,4 @@
-const Settings = require("../models/settings")
+const Settings = require("../models/Settings")
 
 // Get Settings (Client aur Admin dono ke liye)
 const getSettings = async (req, res) => {
