@@ -24,7 +24,7 @@ const ProtectedRoute = ({ children }) => {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/admin">
       <Routes>
         {/* Login Page (Public) */}
         <Route path="/login" element={<Login />} />

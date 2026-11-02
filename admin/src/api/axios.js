@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "/api",
 });
 
 // Har request ke sath token automatic bhejne ke liye

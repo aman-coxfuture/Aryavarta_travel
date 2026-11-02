@@ -158,7 +158,7 @@ export default function AdminLayout({ children }) {
         <div className="p-3 border-t border-slate-800 space-y-2">
           {/* View Public Website */}
           <a
-            href="http://localhost:5173"
+            href={import.meta.env.DEV ? 'http://localhost:5173' : '/'}
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ${
@@ -218,7 +218,7 @@ export default function AdminLayout({ children }) {
           <div className="flex items-center space-x-4">
             {/* Live Client Link */}
             <a
-              href="http://localhost:5173"
+              href={import.meta.env.DEV ? 'http://localhost:5173' : '/'}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg border border-slate-200"
