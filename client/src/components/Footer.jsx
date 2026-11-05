@@ -13,34 +13,34 @@ export default function Footer() {
           
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="h-12 w-auto p-0.5 bg-white rounded-xl shadow-md border border-white/20 flex items-center justify-center overflow-hidden">
+            <Link to="/" className="flex items-center space-x-3 group min-w-0">
+              <div className="h-11 sm:h-12 w-auto p-0.5 bg-white rounded-xl shadow-md border border-white/20 flex items-center justify-center overflow-hidden flex-shrink-0">
                 <img
                   src="/logo.png"
                   alt="Aryavarta Travel"
-                  className="h-11 w-auto object-contain rounded-lg"
+                  className="h-10 sm:h-11 w-auto max-w-[120px] object-contain rounded-lg flex-shrink-0"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight text-white font-serif leading-none">
+              <div className="flex flex-col min-w-0">
+                <span className="text-xl sm:text-2xl font-bold tracking-tight text-white font-serif leading-none truncate">
                   Aryavarta <span className="text-amber-400">Tour</span>
                 </span>
-                <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-400 mt-1">
+                <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-400 mt-1 truncate">
                  And Travel Ladakh
                 </span>
               </div>
             </Link>
 
-            <p className="text-slate-400 text-sm leading-relaxed pr-6">
+            <p className="text-slate-400 text-sm leading-relaxed pr-0 sm:pr-6">
               Aryavarta Travel is Ladakh’s premier mountain tour operator, born in the heart of Leh. We specialize in bespoke high-altitude expeditions, family monastery trails, bike adventures, and the legendary Chadar Frozen River Trek with 100% certified local guides and on-ground safety back-up.
             </p>
 
-            <div className="flex items-center space-x-3 pt-2">
-              <div className="flex items-center text-xs bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-300">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 pt-2">
+              <div className="flex items-center text-xs bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-300 w-full sm:w-auto">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
                 <span>ALTOA Registered Ladakh Operator</span>
               </div>
-              <div className="flex items-center text-xs bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-300">
+              <div className="flex items-center text-xs bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-300 w-full sm:w-auto">
                 <ShieldCheck className="w-4 h-4 text-amber-400 mr-2 flex-shrink-0" />
                 <span>Govt. Dept. of Tourism Approved</span>
               </div>
@@ -123,30 +123,28 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-start">
                 <MapPin className="w-4 h-4 text-amber-400 mr-2.5 mt-1 flex-shrink-0" />
-                <span>Office address:- Skalzangling opposite Head post office ( near Singay Namgail chowk )
-PIN code 194101 
-UT Ladakh !</span>
+                <span className="break-words">Office: Skalzangling opposite Head Post Office (near Singay Namgail chowk), PIN 194101, UT Ladakh</span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-4 h-4 text-amber-400 mr-2.5 flex-shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
+                <a href="tel:+919622971598" className="hover:text-white transition-colors">
                   +91 9622971598
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail className="w-4 h-4 text-amber-400 mr-2.5 flex-shrink-0" />
-                <a href="mailto:info@aryavartatravel.com" className="hover:text-white transition-colors">
+                <a href="mailto:Stanzinnamgail7@gmail.com" className="hover:text-white transition-colors break-all">
                   Stanzinnamgail7@gmail.com
                 </a>
               </li>
               <li className="pt-2">
                 <a
-                  href="https://wa.me/919876543210?text=Hi%20Aryavarta%20Travel!%20I%20want%20to%20plan%20a%20trip%20to%20Ladakh."
+                  href="https://wa.me/919622971598?text=Hi%20Aryavarta%20Travel!%20I%20want%20to%20plan%20a%20trip%20to%20Ladakh."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-3.5 py-2 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-600/30 text-xs font-semibold transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4 mr-2 text-emerald-400" />
+                  <MessageCircle className="w-4 h-4 mr-2 text-emerald-400 flex-shrink-0" />
                   Instant WhatsApp Booking
                 </a>
               </li>

@@ -52,8 +52,18 @@ export default function Login() {
         
         {/* Brand Logo Header */}
         <div className="text-center mb-8">
-          <div className="h-16 w-auto p-1 bg-white rounded-2xl shadow-lg border border-slate-200/80 inline-flex items-center justify-center overflow-hidden mx-auto mb-4">
-            <img src="/logo.png" alt="Aryavarta Travel" className="h-full w-auto object-contain rounded-xl" />
+          <div className="h-16 w-auto p-1.5 bg-white rounded-2xl shadow-lg border border-slate-200/80 inline-flex items-center justify-center overflow-hidden mx-auto mb-4 flex-shrink-0">
+            <img 
+              src={`${import.meta.env.BASE_URL || '/'}logo.png`.replace(/\/{2,}/g, '/')} 
+              onError={(e) => {
+                if (!e.currentTarget.dataset.tried) {
+                  e.currentTarget.dataset.tried = 'true';
+                  e.currentTarget.src = e.currentTarget.src.includes('/admin/') ? '/logo.png' : '/admin/logo.png';
+                }
+              }}
+              alt="Aryavarta Travel" 
+              className="h-full w-auto max-h-14 object-contain rounded-xl" 
+            />
           </div>
           <h1 className="text-2xl font-black text-slate-900 font-serif">
             Aryavarta <span className="text-amber-600">Travel</span>

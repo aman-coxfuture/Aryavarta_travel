@@ -8,6 +8,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "seed": "node seedPackages.js",
+    "seed:new": "node seedNewPackages.js",
     "seed:admin": "node seedAdmin.js"
   },
   "keywords": [],

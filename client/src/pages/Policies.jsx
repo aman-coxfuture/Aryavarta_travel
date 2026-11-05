@@ -47,27 +47,27 @@ export default function Policies() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 min-w-[160px] py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all ${
+                className={`flex-1 min-w-[140px] sm:min-w-[160px] py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition-all ${
                   isActive
                     ? 'bg-slate-900 text-white shadow-md'
                     : 'bg-transparent text-slate-600 hover:bg-slate-100'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-amber-400' : 'text-slate-400'}`} />
-                <span>{tab.label}</span>
+                <Icon className={`w-4 h-4 ${isActive ? 'text-amber-400' : 'text-slate-400'} flex-shrink-0`} />
+                <span className="truncate">{tab.label}</span>
               </button>
             );
           })}
         </div>
 
         {/* Tab Content Box */}
-        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-10 text-slate-700 leading-relaxed space-y-6 text-sm">
+        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-4 sm:p-6 md:p-10 text-slate-700 leading-relaxed space-y-6 text-sm">
           
           {/* TAB 1: CANCELLATION */}
           {activeTab === 'cancellation' && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 font-serif mb-2">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-serif mb-2">
                   Cancellation & Refund Policy
                 </h2>
                 <p className="text-slate-600 text-xs sm:text-sm">
@@ -76,7 +76,7 @@ export default function Policies() {
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+                <table className="w-full min-w-[550px] text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
                   <thead>
                     <tr className="bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-wider">
                       <th className="p-3.5 border-b border-slate-200">Notice Period Before Tour Start</th>

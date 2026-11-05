@@ -15,16 +15,16 @@ export default function FloatingWhatsApp() {
   const waUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end flex-col">
+    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-end flex-col max-w-[calc(100vw-32px)]">
 
       {/* Tooltip */}
       {showTooltip && (
-        <div className="mb-3 mr-1 bg-white text-slate-800 text-xs px-3.5 py-2 rounded-xl shadow-xl border border-slate-200 flex items-center space-x-2 animate-bounce">
+        <div className="mb-2 sm:mb-3 mr-1 bg-white text-slate-800 text-[11px] sm:text-xs px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl shadow-xl border border-slate-200 flex items-center space-x-2 animate-bounce max-w-[260px] sm:max-w-xs">
 
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
 
-          <span className="font-medium">
-            Need instant help? Chat with local expert!
+          <span className="font-medium truncate sm:whitespace-normal">
+            Need help? Chat with local expert!
           </span>
 
           <button
@@ -32,7 +32,7 @@ export default function FloatingWhatsApp() {
               e.stopPropagation();
               setShowTooltip(false);
             }}
-            className="text-slate-400 hover:text-slate-600 p-0.5"
+            className="text-slate-400 hover:text-slate-600 p-0.5 flex-shrink-0"
             aria-label="Close tooltip"
           >
             <X className="w-3.5 h-3.5" />
@@ -46,7 +46,7 @@ export default function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp with Aryavarta Travel"
-        className="relative group flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300"
+        className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300"
       >
 
         {/* Pulsing Animation */}

@@ -103,15 +103,14 @@ export default function Dashboard() {
   if (loading) return <div className="p-10 text-center font-bold">Loading Dashboard...</div>;
 
   return (
-    <div className="space-y-8">
-      
+    <div className="space-y-6 md:space-y-8">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
             Season 2026 Overview
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 font-serif">
             Operations Dashboard
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
@@ -119,11 +118,11 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <Link to="/packages" className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-sm">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+          <Link to="/packages" className="px-3.5 sm:px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-sm transition-colors">
             Manage Packages
           </Link>
-          <Link to="/bookings" className="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-amber-600 shadow-sm transition-colors flex items-center space-x-1">
+          <Link to="/bookings" className="px-3.5 sm:px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-amber-600 shadow-sm transition-colors flex items-center space-x-1">
             <span>View All Bookings</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -131,10 +130,10 @@ export default function Dashboard() {
       </div>
 
       {/* 4 KPI CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         
         {/* KPI 1: Total Bookings */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Total Bookings</span>
             <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
@@ -142,7 +141,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-3xl font-black text-slate-900 font-serif">
+            <div className="text-2xl sm:text-3xl font-black text-slate-900 font-serif">
               {totalBookings}
             </div>
             <div className="text-xs text-emerald-600 font-semibold mt-1 flex items-center">
@@ -152,7 +151,7 @@ export default function Dashboard() {
         </div>
 
         {/* KPI 2: Total Revenue */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Total Revenue</span>
             <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
@@ -160,7 +159,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-3xl font-black text-slate-900 font-serif">
+            <div className="text-2xl sm:text-3xl font-black text-slate-900 font-serif">
               {formatCurrency(totalRevenue)}
             </div>
             <div className="text-xs text-emerald-600 font-semibold mt-1 flex items-center">
@@ -170,7 +169,7 @@ export default function Dashboard() {
         </div>
 
         {/* KPI 3: Pending Payments */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Pending Payments</span>
             <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
@@ -178,7 +177,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-3xl font-black text-rose-600 font-serif">
+            <div className="text-2xl sm:text-3xl font-black text-rose-600 font-serif">
               {formatCurrency(pendingPaymentsAmount)}
             </div>
             <div className="text-xs text-slate-500 mt-1">
@@ -188,7 +187,7 @@ export default function Dashboard() {
         </div>
 
         {/* KPI 4: Active Leads */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Active Enquiries</span>
             <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
@@ -196,7 +195,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="mt-3">
-            <div className="text-3xl font-black text-slate-900 font-serif">
+            <div className="text-2xl sm:text-3xl font-black text-slate-900 font-serif">
               {activeLeads}
             </div>
             <div className="text-xs text-amber-700 font-semibold mt-1 flex items-center">
@@ -208,27 +207,27 @@ export default function Dashboard() {
       </div>
 
       {/* Operational Highlights Banner (Static UI) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-2xl p-6 shadow-md border border-slate-800 flex flex-col justify-between">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="lg:col-span-2 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-2xl p-4 md:p-6 shadow-md border border-slate-800 flex flex-col justify-between">
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
               <Mountain className="w-4 h-4" />
               <span>Leh Basecamp Alert</span>
             </div>
-            <h3 className="text-xl font-bold text-white font-serif">
+            <h3 className="text-lg sm:text-xl font-bold text-white font-serif">
               Tomorrow: 3 Expeditions Departing for Nubra & Pangong
             </h3>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl">
               All 3 vehicles (Innova Crysta JK-10 and Scorpio 4x4) have completed pre-departure tire checks, oximeter battery replacement, and medical oxygen canister inspection at Leh motor garage.
             </p>
           </div>
-          <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+          <div className="mt-6 pt-4 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400">
             <span>Khardung La Pass status: <strong>Open & Clear (BRO)</strong></span>
             <span className="text-emerald-400 font-semibold">100% Permits Ready</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm space-y-4">
+        <div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-200/90 shadow-sm space-y-4">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
             Bookings By Circuit
           </h4>
@@ -251,7 +250,7 @@ export default function Dashboard() {
 
       {/* RECENT BOOKINGS TABLE (Dynamic) */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-5 border-b border-slate-200 flex items-center justify-between">
+        <div className="p-4 md:p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h3 className="text-base font-bold text-slate-900 font-serif">Recent Bookings & Reservations</h3>
             <p className="text-xs text-slate-500">Latest requests received via website and direct WhatsApp.</p>
@@ -263,7 +262,7 @@ export default function Dashboard() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
+          <table className="w-full min-w-[700px] text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-50/80 text-slate-600 uppercase font-semibold tracking-wider border-b border-slate-200">
                 <th className="py-3.5 px-4">Booking ID & Customer</th>

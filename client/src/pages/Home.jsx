@@ -48,31 +48,31 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/40"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-transparent to-slate-950/70"></div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-20">
-          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-6 shadow-xl animate-fadeIn">
-            <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>Curated Expeditions in The Land of High Passes</span>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-24 pb-16 sm:pb-20">
+          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full mb-5 sm:mb-6 shadow-xl animate-fadeIn">
+            <Sparkles className="w-4 h-4 text-amber-400 flex-shrink-0" />
+            <span className="truncate">Curated Expeditions in The Land of High Passes</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 font-serif">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-5 sm:mb-6 font-serif break-words">
            Where The Mountains Touch <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">The Sky</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto font-light leading-relaxed mb-10 drop-shadow-md">
+          <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-3xl mx-auto font-light leading-relaxed mb-8 sm:mb-10 drop-shadow-md">
             Discover the magic of Ladakh with unforgettable journeys through breathtaking Himalayan landscapes, turquoise alpine lakes, ancient monasteries, and hidden mountain valleys. Experience authentic local culture, thrilling adventures, and moments that stay with you forever.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-            <a href="#featured-packages" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 transition-all transform hover:-translate-y-1">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-md mx-auto">
+            <a href="#featured-packages" className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 transition-all transform hover:-translate-y-0.5">
               <span>Explore Packages</span>
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
             </a>
-            <Link to="/enquiry" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold text-white bg-slate-900/80 hover:bg-slate-900 border border-white/30 backdrop-blur-md shadow-xl transition-all hover:border-amber-400">
+            <Link to="/enquiry" className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold text-white bg-slate-900/80 hover:bg-slate-900 border border-white/30 backdrop-blur-md shadow-xl transition-all hover:border-amber-400">
               Custom Itinerary
             </Link>
           </div>
 
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
             <div className="glass-panel-dark p-3.5 rounded-xl flex items-center space-x-3 text-slate-200">
               <ShieldCheck className="w-6 h-6 text-emerald-400 flex-shrink-0" />
               <div>
@@ -137,7 +137,7 @@ export default function Home() {
               <p className="text-slate-500 font-medium">Loading Expeditions...</p>
             </div>
           ) : featuredPackages.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
               {featuredPackages.map((pkg) => (
                 <PackageCard key={pkg._id} pkg={pkg} />
               ))}
@@ -151,22 +151,22 @@ export default function Home() {
       </section>
 
       {/* POPULAR DESTINATIONS SECTION */}
-      <section className="py-20 bg-white border-y border-slate-200/80">
+      <section className="py-16 sm:py-20 bg-white border-y border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">
               <MapPin className="w-4 h-4" />
               <span>Explore The High Realm</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-serif">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
               Iconic Ladakh Destinations
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base mt-2">
+            <p className="text-slate-600 text-xs sm:text-base mt-2">
               From mirror-like saline lakes to centuries-old cliffside gompas and soaring high passes.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-5">
             {MOCK_DESTINATIONS.map((dest) => (
               <div key={dest.id} className="group relative bg-slate-50 rounded-2xl p-3 border border-slate-200/80 hover:border-amber-400 hover:shadow-xl transition-all text-center flex flex-col items-center">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden mb-3 border-2 border-amber-400/50 shadow-md group-hover:scale-105 transition-transform duration-300">

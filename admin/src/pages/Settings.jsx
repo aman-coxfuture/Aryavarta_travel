@@ -154,7 +154,7 @@ export default function Settings() {
         <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
           Configuration & Contact Sync
         </span>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 font-serif">
           Business Settings
         </h1>
         <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
@@ -165,13 +165,13 @@ export default function Settings() {
       <form onSubmit={handleSave} className="space-y-6">
         
         {/* Admin Profile Settings */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-6 space-y-5">
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center">
             <User className="w-4 h-4 text-amber-600 mr-2" />
             Admin Profile Settings
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {/* Admin Name */}
             <div>
               <label className="text-xs font-bold text-slate-700 uppercase tracking-wide block mb-1.5">
@@ -219,13 +219,13 @@ export default function Settings() {
         </div>
 
         {/* Contact Information */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-6 space-y-5">
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center">
             <MessageCircle className="w-4 h-4 text-emerald-600 mr-2" />
             Direct Communication Channels
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {/* WhatsApp Number */}
             <div>
               <label className="text-xs font-bold text-slate-700 uppercase tracking-wide block mb-1.5">
@@ -302,7 +302,7 @@ export default function Settings() {
         </div>
 
         {/* Physical Office Addresses */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-6 space-y-5">
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center">
             <MapPin className="w-4 h-4 text-amber-600 mr-2" />
             Official Physical Addresses
@@ -339,13 +339,13 @@ export default function Settings() {
         </div>
 
         {/* High Altitude Regulatory Fees */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-6 space-y-5">
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center">
             <ShieldCheck className="w-4 h-4 text-sky-600 mr-2" />
             Ladakh Tourism & Environmental Dues
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             <div>
               <label className="text-xs font-bold text-slate-700 uppercase tracking-wide block mb-1.5">
                 Leh DC Office Inner Line Permit Fee (₹ per traveler)
@@ -379,7 +379,7 @@ export default function Settings() {
           <button
             type="submit"
             disabled={saving}
-            className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition-all flex items-center space-x-2 disabled:opacity-70"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-70"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
             <span>{saving ? 'Saving...' : 'Save Settings Changes'}</span>

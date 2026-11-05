@@ -59,7 +59,7 @@ export default function Enquiries() {
           <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
             Bespoke Trip Inquiries
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 font-serif">
             Custom Trip Enquiries
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
@@ -96,30 +96,30 @@ export default function Enquiries() {
           return (
             <div 
               key={enq._id}
-              className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 hover:shadow-md transition-shadow space-y-4"
+              className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-6 hover:shadow-md transition-shadow space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs">
+                <div className="flex items-start sm:items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs flex-shrink-0">
                     {displayId}
                   </div>
-                  <div>
-                    <h3 className="font-bold text-slate-900 text-sm">{enq.name}</h3>
-                    <div className="text-[11px] text-slate-500 flex items-center space-x-2">
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-slate-900 text-sm truncate">{enq.name}</h3>
+                    <div className="text-[11px] text-slate-500 flex flex-wrap items-center gap-1.5 sm:gap-2">
                       <span>{enq.phone}</span>
                       <span>•</span>
-                      <span>{enq.email}</span>
+                      <span className="truncate max-w-[160px] sm:max-w-none">{enq.email}</span>
                       <span>•</span>
                       <span className="flex items-center"><Clock className="w-3 h-3 mr-1" /> {createdDate}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <select
                     value={enq.status || 'new'}
                     onChange={(e) => handleStatusChange(enq._id, e.target.value)}
-                    className="text-xs font-bold px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 capitalize"
+                    className="text-xs font-bold px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 capitalize"
                   >
                     <option value="new">New Lead</option>
                     <option value="contacted">Contacted</option>
@@ -131,7 +131,7 @@ export default function Enquiries() {
                     href={waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold space-x-1"
+                    className="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold space-x-1 transition-colors"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>WhatsApp Lead</span>

@@ -117,10 +117,10 @@ Notes: ${notes || 'None'}
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-10">
+        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6 md:p-10">
           
           {submitted ? (
-            <div className="text-center py-10 space-y-4">
+            <div className="text-center py-8 sm:py-10 space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
@@ -132,7 +132,7 @@ Notes: ${notes || 'None'}
               </p>
               <div className="pt-4 flex justify-center space-x-3">
                 <a
-                  href={`https://wa.me/919876543210?text=${waEnquiryText}`}
+                  href={`https://wa.me/919622971598?text=${waEnquiryText}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center"
@@ -143,7 +143,7 @@ Notes: ${notes || 'None'}
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               
               {/* Step 1: Destination Wishlist */}
               <div>
@@ -294,7 +294,7 @@ Notes: ${notes || 'None'}
               </div>
 
               {/* Submit Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -314,10 +314,10 @@ Notes: ${notes || 'None'}
                 </button>
 
                 <a
-                  href={`https://wa.me/919876543210?text=${waEnquiryText}`}
+                  href={`https://wa.me/919622971598?text=${waEnquiryText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center space-x-2"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center space-x-2 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Send via WhatsApp</span>

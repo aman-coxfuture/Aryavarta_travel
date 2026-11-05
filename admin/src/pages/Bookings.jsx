@@ -158,7 +158,7 @@ export default function Bookings() {
           <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
             Reservations Roster
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 font-serif">
             Bookings Management
           </h1>
           <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
@@ -169,7 +169,7 @@ export default function Bookings() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => alert('Exporting current bookings roster as CSV...')}
-            className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-sm flex items-center space-x-1.5"
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 shadow-sm flex items-center justify-center space-x-1.5 transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-slate-500" />
             <span>Export CSV</span>
@@ -178,11 +178,11 @@ export default function Bookings() {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+      <div className="bg-white p-4 md:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-center">
           
           {/* Search Input */}
-          <div className="lg:col-span-5 relative">
+          <div className="sm:col-span-2 lg:col-span-5 relative">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
@@ -236,13 +236,14 @@ export default function Bookings() {
           </div>
 
           {/* Reset */}
-          <div className="lg:col-span-1 text-center">
+          <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-right lg:text-center">
             <button
               onClick={resetFilters}
-              className="p-2 text-slate-500 hover:text-amber-600 rounded-lg hover:bg-slate-100"
+              className="p-2 text-slate-500 hover:text-amber-600 rounded-lg hover:bg-slate-100 transition-colors inline-flex items-center space-x-1"
               title="Reset Filters"
             >
-              <RotateCcw className="w-4 h-4 mx-auto" />
+              <RotateCcw className="w-4 h-4" />
+              <span className="sm:inline lg:hidden text-xs font-semibold ml-1">Reset</span>
             </button>
           </div>
 
@@ -252,7 +253,7 @@ export default function Bookings() {
       {/* DATA TABLE */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
+          <table className="w-full min-w-[750px] text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-50/80 text-slate-600 uppercase font-semibold tracking-wider border-b border-slate-200">
                 <th className="py-3.5 px-4">Booking ID & Customer</th>

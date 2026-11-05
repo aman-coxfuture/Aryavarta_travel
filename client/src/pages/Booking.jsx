@@ -213,7 +213,7 @@ export default function Booking() {
           
           {/* Dropdown to select/change package if packages were fetched */}
           {packages.length > 0 ? (
-            <div className="w-full lg:w-auto min-w-[280px] sm:min-w-[340px]">
+            <div className="w-full lg:w-auto min-w-0 sm:min-w-[320px]">
               <label htmlFor="top-package-select" className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-1.5 flex items-center justify-between">
                 <span>Choose Package</span>
                 <span className="text-[10px] text-amber-600 font-semibold lowercase">({packages.length} available)</span>
@@ -241,11 +241,11 @@ export default function Booking() {
         </div>
 
         {/* Layout: Main Form (Left) & Side WhatsApp/Summary (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           {/* Main Booking Form */}
-          <div className="lg:col-span-8">
-            <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8">
+          <div className="lg:col-span-8 w-full">
+            <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-4 sm:p-6 md:p-8">
               
               {isSubmitted ? (
                 /* Success Confirmation State */
