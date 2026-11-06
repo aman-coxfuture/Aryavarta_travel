@@ -2,29 +2,40 @@ const express = require("express");
 const router = express.Router();
 const { protect, adminOnly } = require("../middleware/authMiddleware");
 const upload = require("../middleware/multer");
-const { getAllEnquiries, updateEnquiryStatus } = require("../controllers/enquiryController");
-const { getSettings, updateSettings } = require("../controllers/settingsController");
+const {
+  getAllEnquiries,
+  updateEnquiryStatus,
+} = require("../controllers/enquiryController");
+const {
+  getSettings,
+  updateSettings,
+} = require("../controllers/settingsController");
 
 // Controllers Import
-const { createPackage, getAllAdminPackages, updatePackage, deletePackage } = require("../controllers/packageController");
+const {
+  createPackage,
+  getAllAdminPackages,
+  updatePackage,
+  deletePackage,
+} = require("../controllers/packageController");
 const { uploadImage } = require("../controllers/uploadController");
-const { getAllBookings, updateBookingStatus, updatePayment, deleteBooking } = require("../controllers/bookingController");
+const {
+  getAllBookings,
+  updateBookingStatus,
+  updatePayment,
+  deleteBooking,
+} = require("../controllers/bookingController");
 
 // Sabhi admin routes protected hain (Bina token ke koi access nahi kar sakta)
-router.use(protect); 
+router.use(protect);
 
 // ================= PACKAGE ROUTES =================
-router.route("/packages")
-  .get(getAllAdminPackages)
-  .post(createPackage);
+router.route("/packages").get(getAllAdminPackages).post(createPackage);
 
-router.route("/packages/:id")
-  .put(updatePackage)
-  .delete(deletePackage);
+router.route("/packages/:id").put(updatePackage).delete(deletePackage);
 
 // Image Upload Route
 router.post("/upload", upload.single("image"), uploadImage);
-
 
 // ================= BOOKING ROUTES =================
 // Saari bookings dekhne ke liye
@@ -40,7 +51,7 @@ router.put("/bookings/:id/payment", updatePayment);
 router.delete("/bookings/:id", deleteBooking);
 router.get("/enquiries", getAllEnquiries);
 router.put("/enquiries/:id", updateEnquiryStatus);
-router.get("/settings", getSettings);   // Admin fetch kar sake
+
 router.put("/settings", updateSettings);
 
 module.exports = router;
